@@ -1,0 +1,27 @@
+This is a workaround to make the curl_json plugin use a different User Agent when curling.
+The need for a workaround was noticed when trying to make the curl_json plugin query JMX-results from jolokia/hawtio on EAP/AMQ-servers.
+See Issue: https://github.com/collectd/collectd/issues/1212
+
+Put the script in the www-folder of your favorite web server, just make sure to have PHP installed.
+
+Configure the curl_json plugin like the following:
+
+<URL "http://<webbserver>/curl.php?url=<page_to_curl>&user=admin&pass=admin">
+        Instance "Instance_name"
+        <Key "value">
+                Type "your_value"
+        </Key>
+</URL>
+
+
+Example which will curl the site on vl-amqutv01 via the server vl-collector01:
+
+<URL "http://vl-collector01/curl.php?url=vl-amqutv01:8181/hawtio/jolokia/read/java.lang:type=ClassLoading/LoadedClassCount&user=admin&pass=password">
+        Instance ".vl-amqutv01.LoadedClassCount"
+        <Key "value">
+                Type "gauge"
+        </Key>
+</URL>
+
+This example will request LoadedClasscount on the AMQ and will provide the following result:
+{"timestamp":1452640185,"status":200,"request":{"mbean":"java.lang:type=ClassLoading","attribute":"LoadedClassCount","type":"read"},"value":14802}
