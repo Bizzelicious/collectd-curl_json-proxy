@@ -28,4 +28,4 @@ This example will request LoadedClasscount on the AMQ and will provide the follo
 
 Todo:
 
-- Add support for a standalone PHP server - no need for a lamp stack to run this!
+- Add support for a standalone PHP server - no need for a lamp stack to run this script!
