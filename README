@@ -25,3 +25,7 @@ Example which will curl the site on vl-amqutv01 via the server vl-collector01:
 
 This example will request LoadedClasscount on the AMQ and will provide the following result:
 {"timestamp":1452640185,"status":200,"request":{"mbean":"java.lang:type=ClassLoading","attribute":"LoadedClassCount","type":"read"},"value":14802}
+
+Todo:
+
+- Add support for a standalone PHP server - no need for a lamp stack to run this!
